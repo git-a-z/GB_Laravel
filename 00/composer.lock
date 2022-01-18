@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "48a68dc04d52fed1a10c284ce3a39968",
+    "content-hash": "8892152e4943c5dba590c86200e99796",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5931,7 +5932,7 @@
                 {
                     "url": "https://tidelift.com/funding/github/packagist/composer/composer",
                     "type": "tidelift"
-                }
+                },
             ],
             "time": "2022-01-04T09:57:54+00:00"
         },
@@ -8507,8 +8508,8 @@
             "funding": [
                 {
                     "url": "https://github.com/sebastianbergmann",
-                    "type": "github"
-                }
+                    "type": "github",
+                },
             ],
             "time": "2020-09-28T05:52:38+00:00"
         },
