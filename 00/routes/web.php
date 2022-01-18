@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\СategoryController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,10 +35,10 @@ Route::get('/02', function () {
 Route::get('/home', [HomeController::class, 'index'])
     ->name('home');
 
-Route::get('/category', [СategoryController::class, 'index'])
+Route::get('/category', [CategoryController::class, 'index'])
     ->name('category::catalog');
 
-Route::get('/category/news/{id}', [СategoryController::class, 'news'])
+Route::get('/category/news/{id}', [CategoryController::class, 'news'])
     ->where('id', '[0-9]+')
     ->name('category::news');
 
@@ -48,4 +48,3 @@ Route::get('/news', [NewsController::class, 'index'])
 Route::get('/news/card/{id}', [NewsController::class, 'card'])
     ->where('id', '[0-9]+')
     ->name('news::card');
-});
