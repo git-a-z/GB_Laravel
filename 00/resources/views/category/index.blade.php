@@ -17,7 +17,7 @@
             </a>
         </div>
     @empty
-        Categories no more!
+        {{ $noMoreCategory }}
     @endforelse    
 </div>
 @endsection

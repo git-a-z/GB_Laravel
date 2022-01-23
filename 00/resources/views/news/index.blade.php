@@ -17,7 +17,7 @@
             </a>
         </div>
     @empty
-        News no more!
+        {{ $noMoreNews }}
     @endforelse    
 </div>
 @endsection

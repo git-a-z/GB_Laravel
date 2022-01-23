@@ -15,7 +15,7 @@
     @endisset
 
     @empty($card)
-        News no more!
+        {{ $noMoreNews }}
     @endempty    
 </div>
 @endsection

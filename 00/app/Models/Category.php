@@ -12,6 +12,20 @@ class Category
 
     public function getCategory()
     {
-        return $this->category;
+        $categoryArray = session('categoryArray');
+
+        if (isset($categoryArray)) {
+            return $categoryArray;            
+        } else {
+            return $this->category;
+        }        
+    }
+
+    public function addCategory(string $title)
+    {
+        $categoryArray = $this->getCategory();
+        $key = count($categoryArray) + 1;
+        $categoryArray[$key] = ['title' => htmlspecialchars($title)];
+        session(['categoryArray' => $categoryArray]);
     }
 }

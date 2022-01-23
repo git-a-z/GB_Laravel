@@ -37,7 +37,10 @@ class AppServiceProvider extends ServiceProvider
                 'alias' => 'news::catalog',
             ],
         ];
-
         \View::share('menu', $menu);
+
+        \View::share('noMoreNews', 'no more news');
+
+        \View::share('noMoreCategory', 'no more categories');
     }
 }

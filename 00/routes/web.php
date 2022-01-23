@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\CategoryController;
@@ -48,3 +49,9 @@ Route::get('/news', [NewsController::class, 'index'])
 Route::get('/news/card/{id}', [NewsController::class, 'card'])
     ->where('id', '[0-9]+')
     ->name('news::card');
+
+Route::get('/admin/category/new', [AdminCategoryController::class, 'new'])
+    ->name('admin::category::new');
+
+Route::post('/admin/category/create', [AdminCategoryController::class, 'create'])
+    ->name('admin::category::create');
