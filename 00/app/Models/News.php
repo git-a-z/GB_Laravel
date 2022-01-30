@@ -2,41 +2,25 @@
 
 namespace App\Models;
 
+use DB;
+
 class News 
 {
-    private $news = [
-        1 => ['title' => 'Novak Djokovic to be deported',
-            'text' => 'Novak Djokovic to be deported after Australian court backs visa cancellation.',
-            'category' => [1]],
-        2 => ['title' => 'Olympic boycott',
-            'text' => 'The US, UK, Australia and Canada won\'t be sending government representatives to the Winter Olympics.',
-            'category' => [1,2]],
-        3 => ['title' => 'Orwellian treatment',
-            'text' => 'Serbia\'s Leader Denounces Australia\'s Treatment of Djokovic as \'Orwellian\'.',
-            'category' => [1,2,3]],
-    ];
-
     public function getNews()
     {
-        return $this->news;
+        $news = DB::select("SELECT * FROM news");
+        return $news;
     }
 
     public function getNewsById($id)
     {
-        $newsById = isset($this->news[$id]) ? $this->news[$id] : null;        
-        return $newsById;
+        $news = DB::select("SELECT * FROM news WHERE id = :id", ['id' => $id]);
+        return !empty($news) ? $news[0] : null;
     }
 
     public function getNewsByCategoryId($id)
     {
-        $newsByCategory = [];
-
-        foreach ($this->news as $newsID => $item) {
-            if (in_array($id, $item['category'])) {
-                $newsByCategory[$newsID] = $item;
-            }
-        }
-
-        return $newsByCategory;
+        $news = DB::select("SELECT * FROM news WHERE category_id = :id", ['id' => $id]);
+        return !empty($news) ? $news : [];
     }
 }

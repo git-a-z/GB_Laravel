@@ -2,30 +2,20 @@
 
 namespace App\Models;
 
+use DB;
+
 class Category
 {
-    private $category = [
-        1 => ['title' => 'Sport'],
-        2 => ['title' => 'Politics'],
-        3 => ['title' => 'Culture'],
-    ];
-
     public function getCategory()
-    {
-        $categoryArray = session('categoryArray');
-
-        if (isset($categoryArray)) {
-            return $categoryArray;            
-        } else {
-            return $this->category;
-        }        
+    {        
+        $category = DB::select("SELECT * FROM category");
+        return $category;
     }
 
     public function addCategory(string $title)
     {
-        $categoryArray = $this->getCategory();
-        $key = count($categoryArray) + 1;
-        $categoryArray[$key] = ['title' => htmlspecialchars($title)];
-        session(['categoryArray' => $categoryArray]);
+        // $categoryArray = $this->getCategory();
+        // $key = count($categoryArray) + 1;
+        // $categoryArray[$key] = ['title' => htmlspecialchars($title)];
     }
 }

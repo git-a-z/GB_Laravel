@@ -10,8 +10,12 @@
 
 @section('content')
 <div>
-    @isset($card['text'])
-        {{ $card['text'] }}
+    @isset($card->title)
+        <h5>{{ $card->title }}</h5>
+    @endisset
+
+    @isset($card->text)
+        {{ $card->text }}
     @endisset
 
     @empty($card)

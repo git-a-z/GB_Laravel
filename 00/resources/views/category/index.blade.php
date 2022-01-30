@@ -10,10 +10,10 @@
 
 @section('content')
 <div>
-    @forelse ($category as $id => $item)
+    @forelse ($category as $item)
         <div>
-            <a href='{{ route('category::news', ['id' => $id]) }}'>
-                {{ $item['title'] }}
+            <a href='{{ route('category::news', ['id' => $item->id]) }}'>
+                {{ $item->title }}
             </a>
         </div>
     @empty
