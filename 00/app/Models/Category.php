@@ -2,20 +2,11 @@
 
 namespace App\Models;
 
-use DB;
+use Illuminate\Database\Eloquent\Model;
 
-class Category
+class Category extends Model
 {
-    public function getCategory()
-    {        
-        $category = DB::select("SELECT * FROM category");
-        return $category;
-    }
-
-    public function addCategory(string $title)
-    {
-        // $categoryArray = $this->getCategory();
-        // $key = count($categoryArray) + 1;
-        // $categoryArray[$key] = ['title' => htmlspecialchars($title)];
-    }
+    protected $fillable = [
+        'title',
+    ];
 }

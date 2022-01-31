@@ -7,15 +7,13 @@ use App\Models\News;
 
 class CategoryController extends Controller
 {
-    public function index(Category $modelCategory) 
+    public function index() 
     {
-        $category = $modelCategory->getCategory();
-        return view('category.index', ['category' => $category]);
+        return view('category.index', ['category' => Category::all()]);
     }
 
-    public function news($id, News $modelNews) 
+    public function news(int $id) 
     {
-        $news = $modelNews->getNewsByCategoryId($id);
-        return view('news.index', ['news' => $news]);
+        return view('news.index', ['news' => News::getNewsByCategoryId($id)]);
     }
 }

@@ -1,25 +1,25 @@
 @extends('layouts.admin')
 
 @section('title')
-    Сreate a new category 
+    Edit category 
 @endsection
 
 @section('pageName')
-    Сreate a new category 
+    Edit category 
 @endsection
 
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
-        {{ Form::open(array('route' => 'admin::category::create')) }}
+        {{ Form::open(array('route' => array('admin::category::update', $category->id))) }}
             <div class="form-group">
                 <label class="form-label">
                     Category title: 
                 </label>
-                {{ Form::text('title', '', ['class' => 'form-control']) }}
+                {{ Form::text('title', $category->title, ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
-                {{ Form::submit('create', ['class' => 'btn btn-success']) }}
+                {{ Form::submit('update', ['class' => 'btn btn-success']) }}
             </div>
         {{ Form::close() }}
     </div>

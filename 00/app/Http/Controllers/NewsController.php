@@ -6,15 +6,13 @@ use App\Models\News;
 
 class NewsController extends Controller
 {
-    public function index(News $modelNews) 
+    public function index() 
     {
-        $news = $modelNews->getNews();
-        return view('news.index', ['news' => $news]);
+        return view('news.index', ['news' => News::all()]);
     }
 
-    public function card($id, News $modelNews) 
+    public function card(News $id) 
     {
-        $card = $modelNews->getNewsById($id);
-        return view('news.card', ['card' => $card]);
+        return view('news.card', ['card' => $id]);
     }
 }

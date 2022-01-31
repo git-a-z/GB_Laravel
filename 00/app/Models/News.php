@@ -2,25 +2,20 @@
 
 namespace App\Models;
 
-use DB;
+use Illuminate\Database\Eloquent\Model;
 
-class News 
+class News extends Model
 {
-    public function getNews()
-    {
-        $news = DB::select("SELECT * FROM news");
-        return $news;
-    }
+    protected $fillable = [
+        'title',
+        'text',
+        'category_id',
+    ];
 
-    public function getNewsById($id)
+    public static function getNewsByCategoryId(int $id)
     {
-        $news = DB::select("SELECT * FROM news WHERE id = :id", ['id' => $id]);
-        return !empty($news) ? $news[0] : null;
-    }
-
-    public function getNewsByCategoryId($id)
-    {
-        $news = DB::select("SELECT * FROM news WHERE category_id = :id", ['id' => $id]);
-        return !empty($news) ? $news : [];
+        return static::query()
+            ->where('category_id', $id)
+            ->get();
     }
 }

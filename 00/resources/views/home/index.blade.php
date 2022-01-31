@@ -10,7 +10,7 @@
 
 @section('content')
     <div>
-        <div><a href='{{ route('category::catalog') }}'>Categories</a></div>
-        <div><a href='{{ route('news::catalog') }}'>News</a></div>  
+        <div><a href='{{ route('news::catalog') }}'>News</a></div> 
+        <div><a href='{{ route('category::catalog') }}'>Categories</a></div> 
     </div>
 @endsection

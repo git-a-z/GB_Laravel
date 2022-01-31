@@ -4,9 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\News;
 use App\Models\Category;
 
-class CategoryController extends Controller
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +16,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index', ['category' => Category::all()]);
+        return view('admin.news.index', ['news' => News::all()]);
     }
 
-    public function delete(Category $id)
+    public function delete(News $id)
     {
         $id->delete();
-        return redirect()->route('admin::category::catalog');
+        return redirect()->route('admin::news::catalog');
     }
 
     /**
@@ -30,9 +31,18 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $id)
+    public function edit(News $id)
     {
-        return view('admin.category.update', ['category' => $id]);
+        $category = Category::all();
+        $categoryArray = [];
+        foreach($category as $item) {
+            $categoryArray[$item->id] = $item->title;
+        }
+
+        return view('admin.news.update', [
+            'news' => $id,
+            'categoryArray' => $categoryArray
+        ]);
     }
 
     /**
@@ -44,20 +54,24 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $category = Category::find($id);
+        $news = News::find($id);
 
-        if (isset($category)) {
+        if (isset($news)) {
             $title = $request->input('title');
-            $title .= " ($id)";
+            $text = $request->input('text');
+            $category_id = $request->input('category_id');
+            $title .= " ($category_id)";
 
-            $category->fill([
+            $news->fill([
                 'title' => htmlspecialchars($title),
+                'text' => htmlspecialchars($text),
+                'category_id' => htmlspecialchars($category_id),
             ]);
-            $category->save();
+            $news->save();
 
-            return redirect()->route('admin::category::catalog');
+            return redirect()->route('admin::news::catalog');
         } else {
-            echo 'Can\'t find any categories...';
+            echo 'Can\'t find any news...';
         }
     }
 
@@ -67,21 +81,31 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Category $category)
+    public function create(Request $request, News $news)
     {
         $title = $request->input('title');
+        $text = $request->input('text');
+        $category_id = $request->input('category_id');
+        $title .= " ($category_id)";
 
-        $category->fill([
-            'title' => htmlspecialchars($title)
+        $news->fill([
+            'title' => htmlspecialchars($title),
+            'text' => htmlspecialchars($text),
+            'category_id' => htmlspecialchars($category_id),
         ]);
-        $category->save();
+        $news->save();
 
-        return redirect()->route('admin::category::catalog');
+        return redirect()->route('admin::news::catalog');
     }
 
     public function new()
     {
-        return view('admin.category.create');
+        $category = Category::all();
+        $categoryArray = [];
+        foreach($category as $item) {
+            $categoryArray[$item->id] = $item->title;
+        }
+        return view('admin.news.create', ['categoryArray' =>  $categoryArray]);
     }
 
     /**
