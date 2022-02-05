@@ -29,7 +29,7 @@ class NewsSeeder extends Seeder
 
             $data[] = [
                 'category_id' => $category_id,
-                'title' => $faker->sentence(rand(2,5)) . " ($category_id)",
+                'title' => $faker->sentence(rand(2,5)),
                 'text' => $faker->sentence(rand(50,100)) . " ($category[$index])",
             ];
         }

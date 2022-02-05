@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminCategorySaveRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -38,17 +39,16 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminCategorySaveRequest $request, $id)
     {
         $category = Category::find($id);
 
         if (isset($category)) {
             $title = $request->input('title');
-            $title .= " ($id)";
 
             $category->fill([
                 'title' => htmlspecialchars($title),
@@ -67,7 +67,7 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, Category $category)
+    public function create(AdminCategorySaveRequest $request, Category $category)
     {
         $title = $request->input('title');
 

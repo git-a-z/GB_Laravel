@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('title')
-    Edit category 
+{{ __('labels.EditCategory') }} 
 @endsection
 
 @section('pageName')
-    Edit category 
+{{ __('labels.EditCategory') }} 
 @endsection
 
 @section('content')
@@ -14,12 +14,12 @@
         {{ Form::open(array('route' => array('admin::category::update', $category->id))) }}
             <div class="form-group">
                 <label class="form-label">
-                    Category title: 
+                    {{ __('labels.CategoryTitle') }}: 
                 </label>
                 {{ Form::text('title', $category->title, ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
-                {{ Form::submit('update', ['class' => 'btn btn-success']) }}
+                {{ Form::submit(__('labels.update'), ['class' => 'btn btn-success']) }}
             </div>
         {{ Form::close() }}
     </div>

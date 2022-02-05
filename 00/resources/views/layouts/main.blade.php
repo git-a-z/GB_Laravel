@@ -17,7 +17,7 @@
 <div class="content">
     <h1>
         @yield('pageName')
-    </h1>
+    </h1>    
     @yield('content')
 </div>
 <div class="footer">

@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('title')
-    Сreate news 
+{{ __('labels.СreateNews') }} 
 @endsection
 
 @section('pageName')
-    Сreate news 
+{{ __('labels.СreateNews') }} 
 @endsection
 
 @section('content')
@@ -14,20 +14,20 @@
         {{ Form::open(array('route' => 'admin::news::create')) }}
             <div class="form-group">
                 <label class="form-label">
-                    News title: 
+                    {{ __('labels.NewsTitle') }}: 
                 </label>
                 {{ Form::text('title', '', ['class' => 'form-control']) }}
                 <label class="form-label">
-                    News text: 
+                    {{ __('labels.NewsText') }}: 
                 </label>
                 {{ Form::textarea('text', '', ['class' => 'form-control']) }}
                 <label class="form-label">
-                    News category: 
+                    {{ __('labels.NewsCategory') }}: 
                 </label>
                 {{ Form::select('category_id', $categoryArray, '', ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
-                {{ Form::submit('create', ['class' => 'btn btn-success']) }}
+                {{ Form::submit(__('labels.create'), ['class' => 'btn btn-success']) }}
             </div>
         {{ Form::close() }}
     </div>

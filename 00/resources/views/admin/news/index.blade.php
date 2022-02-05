@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('title')
-    News
+{{ __('labels.News') }} 
 @endsection
 
 @section('pageName')
-    News
+{{ __('labels.News') }} 
 @endsection
 
 @section('content')

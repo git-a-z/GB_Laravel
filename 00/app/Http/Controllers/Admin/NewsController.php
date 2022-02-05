@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminNewsSaveRequest;
 use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Category;
@@ -52,7 +53,7 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminNewsSaveRequest $request, $id)
     {
         $news = News::find($id);
 
@@ -60,7 +61,6 @@ class NewsController extends Controller
             $title = $request->input('title');
             $text = $request->input('text');
             $category_id = $request->input('category_id');
-            $title .= " ($category_id)";
 
             $news->fill([
                 'title' => htmlspecialchars($title),
@@ -81,12 +81,11 @@ class NewsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, News $news)
+    public function create(AdminNewsSaveRequest $request, News $news)
     {
         $title = $request->input('title');
         $text = $request->input('text');
         $category_id = $request->input('category_id');
-        $title .= " ($category_id)";
 
         $news->fill([
             'title' => htmlspecialchars($title),

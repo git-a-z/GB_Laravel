@@ -1,11 +1,11 @@
 @extends('layouts.main')
 
 @section('title')
-    Categories
+{{ __('labels.Categories') }} 
 @endsection
 
 @section('pageName')
-    Categories
+{{ __('labels.Categories') }} 
 @endsection
 
 @section('content')

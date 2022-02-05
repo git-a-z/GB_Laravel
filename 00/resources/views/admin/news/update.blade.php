@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('title')
-    Edit news 
+{{ __('labels.EditNews') }} 
 @endsection
 
 @section('pageName')
-    Edit news 
+{{ __('labels.EditNews') }} 
 @endsection
 
 @section('content')
@@ -14,20 +14,20 @@
         {{ Form::open(array('route' => array('admin::news::update', $news->id))) }}
             <div class="form-group">
                 <label class="form-label">
-                    News title: 
+                    {{ __('labels.NewsTitle') }}: 
                 </label>
                 {{ Form::text('title', $news->title, ['class' => 'form-control']) }}
                 <label class="form-label">
-                    News text: 
+                    {{ __('labels.NewsText') }}: 
                 </label>
                 {{ Form::textarea('text', $news->text, ['class' => 'form-control']) }}
                 <label class="form-label">
-                    News category: 
+                    {{ __('labels.NewsCategory') }}: 
                 </label>
                 {{ Form::select('category_id', $categoryArray, $news->category_id, ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
-                {{ Form::submit('update', ['class' => 'btn btn-success']) }}
+                {{ Form::submit(__('labels.update'), ['class' => 'btn btn-success']) }}
             </div>
         {{ Form::close() }}
     </div>

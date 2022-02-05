@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
 @section('title')
-    Сreate a new category 
+{{ __('labels.СreateCategory') }} 
 @endsection
 
 @section('pageName')
-    Сreate a new category 
+{{ __('labels.СreateCategory') }} 
 @endsection
 
 @section('content')
@@ -14,12 +14,12 @@
         {{ Form::open(array('route' => 'admin::category::create')) }}
             <div class="form-group">
                 <label class="form-label">
-                    Category title: 
+                    {{ __('labels.CategoryTitle') }}: 
                 </label>
                 {{ Form::text('title', '', ['class' => 'form-control']) }}
             </div>
             <div class="form-group">
-                {{ Form::submit('create', ['class' => 'btn btn-success']) }}
+                {{ Form::submit(__('labels.create'), ['class' => 'btn btn-success']) }}
             </div>
         {{ Form::close() }}
     </div>

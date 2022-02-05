@@ -23,10 +23,9 @@ class CategorySeeder extends Seeder
         $data = [];
         $category = ['Sport','Politics','Culture'];
 
-        for ($i=0; $i < 3; $i++){
-            $index = $i + 1;
+        foreach ($category as $value) {
             $data[] = [
-                'title' => $category[$i] . " ($index)",  
+                'title' => $value,  
             ];
         }
 
